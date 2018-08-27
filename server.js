@@ -70,8 +70,7 @@ app.post('/api/exercise/add', function(req,res) {
 
 
 app.get('/api/exercise/log', function(req, res) { 
-  // Need to retrieve certain things from the db: {userId}[&from][&to][&limit]
-  // If userId doesn't exist, throw error                                   sort({name: 1}).limit(2).select({age: 0}).exec(
+  // Takes a Query with a userId and the optional date range and the limit for the query. 
   console.log(req.query)
   Exercise.findById(req.query.userId).select({__v: 0}).exec(function(err, data) {
     if (err) {
